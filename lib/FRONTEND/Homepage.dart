@@ -329,6 +329,7 @@ class _HomepageState extends State<Homepage> {
                 height: 300,
                 width: 300,
                 decoration: BoxDecoration(
+                  border: Border.all(width: 0.2),
                   borderRadius: BorderRadius.circular(5.0),
                   color: const Color(0xffD9D9D9),
                   boxShadow: const [
@@ -435,7 +436,7 @@ class _HomepageState extends State<Homepage> {
               crossFadeState:
                   !vis ? CrossFadeState.showFirst : CrossFadeState.showSecond,
               // Duration for crossFade animation.
-              duration: Duration(seconds: 1)),
+              duration: const Duration(seconds: 1)),
         ),
       ]),
     );

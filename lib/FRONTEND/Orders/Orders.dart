@@ -1,4 +1,5 @@
 import 'package:admin_sales/FRONTEND/Orders/Listview.dart';
+import 'package:admin_sales/FRONTEND/Orders/Listview1.dart';
 import 'package:admin_sales/FRONTEND/upperbar.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ List data = [
       "products": ["APPLE LIME", "NOVA LIME", "WHITE CEMENT"],
       "tweigth": "10 TON",
       "status":"Pending",
+      "id":"O405"
     }
   ],
   [
@@ -26,8 +28,9 @@ List data = [
       "date":"23-11-2022",
       "expdel":"12-12-2022",
       "products": ["APPLE LIME", "NOVA LIME", "WHITE CEMENT"],
-      "tweigth": "10 TON",
-      "status":"Approved"
+      "tweigth": "10",
+      "status":"Approved",
+      "id":"O405"
     }
   ],
   [
@@ -36,8 +39,9 @@ List data = [
       "date":"23-11-2022",
       "expdel":"12-12-2022",
       "products": ["APPLE LIME", "NOVA LIME", "WHITE CEMENT"],
-      "tweigth": "10 TON",
-      "status":"DELIVERY"
+      "tweigth": "10",
+      "status":"DELIVERY",
+      "id":"O405"
     }
   ],
 ];
@@ -133,7 +137,7 @@ class _OrdersState extends State<Orders> {
                     ),
                   ],
                 ),
-                Listview(data: data[selected]),
+              s(selected),
               ],
             ),
           )
@@ -141,4 +145,17 @@ class _OrdersState extends State<Orders> {
       ),
     );
   }
+
+  Widget s(int sel) {
+    if(sel==0){
+      return Listview(data: data[sel],);
+    }
+    else if(sel==1){
+      return Listview1(data: data[sel],);
+    }
+    else{
+      return Listview1(data: data[sel],);
+    }
+  }
+
 }

@@ -23,13 +23,60 @@ class _UpperbarState extends State<Upperbar> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.add_circle,
-                  size: 50,
-                  color: Colors.black54,
-                )),
+            PopupMenuButton<int>(
+              itemBuilder: (context1) => [
+                // popupmenu item 1
+                PopupMenuItem(
+                  value: 1,
+                  child: const Text("New Order",style: TextStyle(fontSize: 15),),
+                  onTap: () async{
+                    final navigator = Navigator.of(context);
+                    // await Future.delayed(Duration.zero);
+                    // navigator.push(
+                    //   MaterialPageRoute(builder: (_) => const Neworder()),
+                    // );
+                  },
+                ),
+                // popupmenu item 2
+                PopupMenuItem(
+                  onTap: ()async{
+                    final navigator = Navigator.of(context);
+                    // await Future.delayed(Duration.zero);
+                    // navigator.push(
+                    //   MaterialPageRoute(builder: (_) => const Newcustomer()),
+                    // );
+                  },
+                  value: 2,
+                  child: const Text("New Customer",style: TextStyle(fontSize: 15),),
+                ),
+                PopupMenuItem(
+                  onTap: ()async{
+                    final navigator = Navigator.of(context);
+                    // await Future.delayed(Duration.zero);
+                    // navigator.push(
+                    //   MaterialPageRoute(builder: (_) => const Newcustomer()),
+                    // );
+                  },
+                  value: 3,
+                  child: const Text("New Price List",style: TextStyle(fontSize: 15),),
+                ),
+                PopupMenuItem(
+                  onTap: ()async{
+                    final navigator = Navigator.of(context);
+                    // await Future.delayed(Duration.zero);
+                    // navigator.push(
+                    //   MaterialPageRoute(builder: (_) => const Newcustomer()),
+                    // );
+                  },
+                  value: 4,
+                  child: const Text("New Item List",style: TextStyle(fontSize: 15),),
+                ),
+              ],
+              offset: const Offset(60, 30),
+              color: Colors.white,
+              elevation: 2,
+              child: const Icon(Icons.add_circle,size: 60,color: Colors.black54,),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
