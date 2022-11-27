@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../Navigation.dart';
+// import 'Orders/NewOrder.dart';
+
 class Upperbar extends StatefulWidget {
   const Upperbar({Key? key}) : super(key: key);
 
@@ -30,17 +33,15 @@ class _UpperbarState extends State<Upperbar> {
                   value: 1,
                   child: const Text("New Order",style: TextStyle(fontSize: 15),),
                   onTap: () async{
-                    final navigator = Navigator.of(context);
-                    // await Future.delayed(Duration.zero);
-                    // navigator.push(
-                    //   MaterialPageRoute(builder: (_) => const Neworder()),
-                    // );
+                    final navigator = Navigation.homeNavigation.currentState;
+                    await Future.delayed(Duration.zero);
+                    navigator?.pushNamed('/home/neworder');
                   },
                 ),
                 // popupmenu item 2
                 PopupMenuItem(
                   onTap: ()async{
-                    final navigator = Navigator.of(context);
+                    // final navigator = Navigator.of(context);
                     // await Future.delayed(Duration.zero);
                     // navigator.push(
                     //   MaterialPageRoute(builder: (_) => const Newcustomer()),
@@ -51,7 +52,7 @@ class _UpperbarState extends State<Upperbar> {
                 ),
                 PopupMenuItem(
                   onTap: ()async{
-                    final navigator = Navigator.of(context);
+                    // final navigator = Navigator.of(context);
                     // await Future.delayed(Duration.zero);
                     // navigator.push(
                     //   MaterialPageRoute(builder: (_) => const Newcustomer()),
@@ -62,7 +63,7 @@ class _UpperbarState extends State<Upperbar> {
                 ),
                 PopupMenuItem(
                   onTap: ()async{
-                    final navigator = Navigator.of(context);
+                    // final navigator = Navigator.of(context);
                     // await Future.delayed(Duration.zero);
                     // navigator.push(
                     //   MaterialPageRoute(builder: (_) => const Newcustomer()),

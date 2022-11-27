@@ -25,9 +25,7 @@ class _Listview1State extends State<Listview1> {
   ];
   String val1 = "";
   TextEditingController dateController = TextEditingController();
-  final TextEditingController _dname = TextEditingController();
-  final TextEditingController _ph = TextEditingController();
-  final TextEditingController _vno = TextEditingController();
+
 
   @override
   void initState() {
@@ -184,135 +182,36 @@ class _Listview1State extends State<Listview1> {
     return SizedBox(
       height: 45,
       width: 60,
-      child: PopupMenuButton<int>(
-          position: PopupMenuPosition.under,
-          child: Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: data == ""
-                  ? const Color(0xffD9D9D9)
-                  : const Color(0xff069BEE),
-              border: data == ""
-                  ? Border.all()
-                  : Border.all(color: const Color(0xffD9D9D9)),
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: data == "" ? const Color(0xffD9D9D9) : const Color(0xff069BEE),
+          border: data == ""
+              ? Border.all()
+              : Border.all(color: const Color(0xffD9D9D9)),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        child: SizedBox(
+          width: 35,
+          child: Text(
+            def,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 13,
             ),
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            child: data == ""
-                ? SizedBox(
-              width: 35,
-              child: Text(
-                def,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 13,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            )
-                : Text(
-              def,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-              ),
-              textAlign: TextAlign.center,
-            ),
+            textAlign: TextAlign.center,
           ),
-          itemBuilder: (context1) => [
-            // popupmenu item 1
-            PopupMenuItem(
-              value: 1,
-              child: Container(
-                width: 500,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "DRIVER NAME: ",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 13,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          width: 155,
-                          child: TextField(
-                              controller: _dname,
-                              decoration: const InputDecoration(
-                                  icon: Icon(Icons.drive_eta_rounded,size: 15,),
-                                  labelText: "Enter Driver Name"
-                              ),
-                              // readOnly: true,
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "PH NO: ",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 13,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          width: 160,
-                          child: TextField(
-                            controller: _ph,
-                            decoration: const InputDecoration(
-                                icon: Icon(Icons.phone,size: 15,),
-                                labelText: "Enter Ph No"
-                            ),
-                            // readOnly: true,
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "VEHICLE NO: ",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 13,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          width: 160,
-                          child: TextField(
-                            controller: _vno,
-                            decoration: const InputDecoration(
-                                icon: Icon(Icons.car_crash,size: 15,),
-                                labelText: "Enter Vehicle No"
-                            ),
-                            // readOnly: true,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ]),
+        ),
+      ),
     );
   }
-
 
   Widget Cont1(String def, String data) {
     return SizedBox(
       height: 45,
       width: 60,
       child: PopupMenuButton<int>(
-        position: PopupMenuPosition.under,
+          position: PopupMenuPosition.under,
           child: Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
@@ -337,12 +236,12 @@ class _Listview1State extends State<Listview1> {
                     ),
                   )
                 : Text(
-                    "${mon[int.parse(data.substring(2,3))-1]} ${data.substring(0,2)}",
+                    "${mon[int.parse(data.substring(2, 3)) - 1]} ${data.substring(0, 2)}",
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 14,
                     ),
-              textAlign: TextAlign.center,
+                    textAlign: TextAlign.center,
                   ),
           ),
           itemBuilder: (context1) => [
@@ -366,21 +265,18 @@ class _Listview1State extends State<Listview1> {
                             controller: dateController,
                             decoration: const InputDecoration(
                                 icon: Icon(Icons.calendar_today),
-                                labelText: "Enter Date"
-                            ),
+                                labelText: "Enter Date"),
                             readOnly: true,
                             onTap: () async {
                               DateTime? pickedDate = await showDatePicker(
                                   context: context,
                                   initialDate: DateTime.now(),
-                                  firstDate:DateTime(2000),
-                                  lastDate: DateTime(2101)
-                              );
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime(2101));
                               setState(() {
                                 dateController.text = pickedDate.toString();
                               });
-                            }
-                        ),
+                            }),
                       )
                     ],
                   ),

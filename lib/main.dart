@@ -1,5 +1,7 @@
 import 'package:admin_sales/FRONTEND/Homepage.dart';
 import 'package:flutter/material.dart';
+
+import 'Navigation.dart';
 // import 'package:sales/FRONTEND/Homepage.dart';
 
 void main() {
@@ -18,7 +20,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      // home: const MyHomePage(),
+      key: Navigation.appNavigation,
+      initialRoute: "/",
+      routes: {
+        '/' : (context) => const MyHomePage(),
+        '/home': (context) => const Homepage(),
+      },
     );
   }
 }
@@ -163,12 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       )
                   ),
                   onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                          const Homepage()),
-                    );
+                    Navigator.of(context).pushNamed('/home');
                   },
                   child: const Text(
                     "LOGIN",
