@@ -1,12 +1,12 @@
-import 'package:admin_sales/FRONTEND/Collection.dart';
+import 'package:admin_sales/FRONTEND/Collections/Collection.dart';
+import 'package:admin_sales/FRONTEND/Customers/Customer_Details.dart';
+import 'package:admin_sales/FRONTEND/Customers/NewCustomer.dart';
 import 'package:admin_sales/FRONTEND/Orders/NewOrder.dart';
 import 'package:admin_sales/FRONTEND/Orders/Orders.dart';
 import 'package:admin_sales/FRONTEND/upperbar.dart';
-// import 'package:admin_sales/FRONTEND/upperbar.dart';
 import 'package:flutter/material.dart';
-
 import '../Navigation.dart';
-// import 'Orders/OrderHome.dart';
+
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -380,7 +380,6 @@ class _HomepageState extends State<Homepage> {
               initialRoute: 'home/orders',
               onGenerateRoute: (RouteSettings settings) {
                 Widget page;
-
                 switch (settings.name) {
                   case 'home/orders':
                     page = const Orders();
@@ -391,6 +390,12 @@ class _HomepageState extends State<Homepage> {
                   case '/home/neworder':
                     page = const Neworder();
                     break;
+                  case '/home/newcustomer':
+                    page = const Newcustomer();
+                    break;
+                  // case '/home/customerdet':
+                  //   page = const Customerdetails();
+                  //   break;
                   default:
                     page = const Orders();
                 }

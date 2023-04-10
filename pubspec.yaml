@@ -36,6 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   dropdown_search: ^2.0.1
   shared_preferences: ^2.0.15
+  syncfusion_flutter_datepicker: ^20.3.59
+  csc_picker:
+  flutter_typeahead: ^4.1.1
+  flutter_slidable: ^2.0.0
+  http:
 
 dev_dependencies:
   flutter_test:

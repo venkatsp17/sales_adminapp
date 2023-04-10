@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../Navigation.dart';
+import 'Order_Details.dart';
+
 class Listview1 extends StatefulWidget {
   final data;
   const Listview1({Key? key, this.data}) : super(key: key);
@@ -47,130 +50,135 @@ class _Listview1State extends State<Listview1> {
         child: ListView.builder(
             itemCount: widget.data.length,
             itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: const Color(0xffD9D9D9),
-                  ),
-                  height: height * 12,
-                  width: width * 80,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 12.0, bottom: 12.0, left: 25.0, right: 25.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: width * 8,
-                          child: Text(
-                            "ORDER ID: ${widget.data[index]['id']}",
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              // fontWeight: FontWeight.bold
+              return GestureDetector(
+                onTap: (){
+                  Navigation.homeNavigation.currentState?.push(MaterialPageRoute(builder: (BuildContext context)=>Orderdetails(data: widget.data[index],)));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: const Color(0xffD9D9D9),
+                    ),
+                    height: height * 12,
+                    width: width * 80,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: 12.0, bottom: 12.0, left: 25.0, right: 25.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: width * 8,
+                            child: Text(
+                              "ORDER ID: ${widget.data[index]['id']}",
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                // fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          color: Colors.grey,
-                          width: 2,
-                          height: height * 12,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: width * 20,
-                              child: Text(
-                                "Customer Name: ${widget.data[index]['name']}",
+                          Container(
+                            color: Colors.grey,
+                            width: 2,
+                            height: height * 12,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: width * 20,
+                                child: Text(
+                                  "Customer Name: ${widget.data[index]['name']}",
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18,
+                                      overflow: TextOverflow.ellipsis
+                                      // fontWeight: FontWeight.bold
+                                      ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 3,
+                              ),
+                              SizedBox(
+                                width: width * 20,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Cont("TON", widget.data[index]['tweigth']),
+                                    Cont(
+                                        mon[int.parse(widget.data[index]["date"]
+                                                .toString()
+                                                .substring(3, 5)) -
+                                            1],
+                                        widget.data[index]['date']
+                                            .toString()
+                                            .substring(0, 2)),
+                                    Cont1("EXP DATE", dateController.text),
+                                    Cont2("DEL DETAILS", val1),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          Container(
+                            color: Colors.grey,
+                            width: 2,
+                            height: height * 12,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                widget.data[index]['products'][0],
                                 style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    overflow: TextOverflow.ellipsis
-                                    // fontWeight: FontWeight.bold
-                                    ),
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  // fontWeight: FontWeight.bold
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              height: 3,
-                            ),
-                            SizedBox(
-                              width: width * 20,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Cont("TON", widget.data[index]['tweigth']),
-                                  Cont(
-                                      mon[int.parse(widget.data[index]["date"]
-                                              .toString()
-                                              .substring(3, 5)) -
-                                          1],
-                                      widget.data[index]['date']
-                                          .toString()
-                                          .substring(0, 2)),
-                                  Cont1("EXP DATE", dateController.text),
-                                  Cont2("DEL DETAILS", val1),
-                                ],
+                              Text(
+                                widget.data[index]['products'][1],
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  // fontWeight: FontWeight.bold
+                                ),
                               ),
-                            )
-                          ],
-                        ),
-                        Container(
-                          color: Colors.grey,
-                          width: 2,
-                          height: height * 12,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              widget.data[index]['products'][0],
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                // fontWeight: FontWeight.bold
+                              Text(
+                                widget.data[index]['products'][2],
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  // fontWeight: FontWeight.bold
+                                ),
                               ),
-                            ),
-                            Text(
-                              widget.data[index]['products'][1],
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                // fontWeight: FontWeight.bold
-                              ),
-                            ),
-                            Text(
-                              widget.data[index]['products'][2],
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                // fontWeight: FontWeight.bold
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          color: Colors.grey,
-                          width: 2,
-                          height: height * 12,
-                        ),
-                        SizedBox(
-                          width: width * 13,
-                          child: const Text(
-                            "READY FOR DELIVERY",
-                            style: TextStyle(
-                                color: Colors.green,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
+                            ],
                           ),
-                        ),
-                      ],
+                          Container(
+                            color: Colors.grey,
+                            width: 2,
+                            height: height * 12,
+                          ),
+                          SizedBox(
+                            width: width * 13,
+                            child: const Text(
+                              "READY FOR DELIVERY",
+                              style: TextStyle(
+                                  color: Colors.green,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

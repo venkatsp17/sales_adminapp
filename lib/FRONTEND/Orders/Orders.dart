@@ -1,9 +1,10 @@
 import 'package:admin_sales/FRONTEND/Orders/Listview.dart';
 import 'package:admin_sales/FRONTEND/Orders/Listview1.dart';
 import 'package:admin_sales/FRONTEND/Orders/Listview2.dart';
-import 'package:admin_sales/FRONTEND/upperbar.dart';
+// import 'package:admin_sales/FRONTEND/upperbar.dart';
 import 'package:flutter/material.dart';
 
+import '../../Backend/Ordersb.dart';
 import 'NewOrder.dart';
 
 class Orders extends StatefulWidget {
@@ -51,6 +52,39 @@ List data = [
 
 class _OrdersState extends State<Orders> {
   int selected = 0;
+  final Ordersb obj = Ordersb();
+  List data1 = [];
+  List data2 = [];
+  List data3 = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchOrderData();
+    super.initState();
+  }
+
+  fetchOrderData() async {
+    dynamic resultant = await obj.makeGetRequest();
+    if (resultant == null) {
+      print("Unable to retrieve");
+    } else {
+      setState(() {
+        for (int i = 0; i < resultant.length; i++) {
+          if (resultant[i]['status'] == "Not Approved" ||
+              resultant[i]['status'] == "Pending") {
+            data3.add(resultant[i]);
+          } else if (resultant[i]['status'] == "Approved") {
+            data2.add(resultant[i]);
+          } else {
+            data1.add(resultant[i]);
+          }
+        }
+        print(data1);
+      });
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -150,15 +184,15 @@ class _OrdersState extends State<Orders> {
   Widget s(int sel) {
     if (sel == 0) {
       return Listview(
-        data: data[sel],
+        data: data3,
       );
     } else if (sel == 1) {
       return Listview1(
-        data: data[sel],
+        data: data2,
       );
     } else {
       return Listview2(
-        data: data[sel],
+        data: data1,
       );
     }
   }

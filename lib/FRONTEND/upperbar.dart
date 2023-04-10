@@ -41,11 +41,9 @@ class _UpperbarState extends State<Upperbar> {
                 // popupmenu item 2
                 PopupMenuItem(
                   onTap: ()async{
-                    // final navigator = Navigator.of(context);
-                    // await Future.delayed(Duration.zero);
-                    // navigator.push(
-                    //   MaterialPageRoute(builder: (_) => const Newcustomer()),
-                    // );
+                    final navigator = Navigation.homeNavigation.currentState;
+                    await Future.delayed(Duration.zero);
+                    navigator?.pushNamed('/home/newcustomer');
                   },
                   value: 2,
                   child: const Text("New Customer",style: TextStyle(fontSize: 15),),
